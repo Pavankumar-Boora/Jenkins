@@ -7,17 +7,23 @@ pipeline {
     stages {
         stage('clone repo and clean it') { 
             steps {
-               bat "mvn clean"
+                 dir('Hello_SpringBoot') {
+                     bat "mvn clean"
+                 }
             }
         }
         stage('Test') { 
             steps {
-                bat "mvn test"
+                dir('Hello_SpringBoot') {
+                    bat "mvn test"
+                }
             }
         }
         stage('Deploy') { 
             steps {
-                bat "mvn package" 
+                dir('Hello_SpringBoot') {
+                    bat "mvn package" 
+                }
             }
         }
     }
